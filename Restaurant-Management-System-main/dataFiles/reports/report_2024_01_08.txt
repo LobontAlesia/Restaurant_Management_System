@@ -1,4 +1,9 @@
 *********** Order List (2024_01_08) ***********
-Order ID:   1  StaffName:Lobont Alesia                   Total:$29.00 
+Order ID:   1  StaffName:Alexia Ilia                     Total:$0.00  
+Order ID:   2  StaffName:Alexia Ilia                     Total:$16.00 
+Order ID:   3  StaffName:Alexia Ilia                     Total:$0.00  
+Order ID:   4  StaffName:Alexia Ilia                     Total:$0.00  
+Order ID:   5  StaffName:Lobont Alesia                   Total:$0.00  
+Order ID:   6  StaffName:Lobont Alesia                   Total:$11.00 
 -------------------------------------------------------
-Total sales:$29.0(1)  Canceled:$0.0(0)
+Total sales:$27.0(6)  Canceled:$0.0(0)

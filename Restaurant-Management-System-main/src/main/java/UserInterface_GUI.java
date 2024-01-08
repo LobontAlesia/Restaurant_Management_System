@@ -1176,7 +1176,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
         }
     }
 
-    public class OrderListPanel extends JPanel implements ActionListener {
+    // Order detail panel
+    private class OrderListPanel extends JPanel implements ActionListener {
         private final JScrollPane scrollPanel;
         private final JButton btnNewOrder;
         private final JButton btnEditOrder;
@@ -1200,7 +1201,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
             gbLayout.setConstraints(scrollPanel, gbc);
             this.add(scrollPanel);
 
-            lblTotalCount = createStyledLabel();
+            lblTotalCount = new JLabel();
+            lblTotalCount.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
             gbc.gridx = 0;
             gbc.gridy = 1;
             gbc.gridwidth = 2;
@@ -1208,83 +1210,70 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
             gbLayout.setConstraints(lblTotalCount, gbc);
             this.add(lblTotalCount);
 
-            lblTotalSales = createStyledLabel();
+            lblTotalSales = new JLabel();
+            lblTotalSales.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
             gbc.gridx = 2;
             gbc.gridy = 1;
+            gbc.gridwidth = 2;
             gbLayout.setConstraints(lblTotalSales, gbc);
             this.add(lblTotalSales);
 
-            lblCancelCount = createStyledLabel();
+            lblCancelCount = new JLabel();
+            lblCancelCount.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
             gbc.gridx = 0;
             gbc.gridy = 2;
+            gbc.gridwidth = 2;
             gbLayout.setConstraints(lblCancelCount, gbc);
             this.add(lblCancelCount);
 
-            lblCancelTotal = createStyledLabel();
+            lblCancelTotal = new JLabel();
+            lblCancelTotal.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
             gbc.gridx = 2;
             gbc.gridy = 2;
+            gbc.gridwidth = 2;
             gbLayout.setConstraints(lblCancelTotal, gbc);
             this.add(lblCancelTotal);
 
-            btnNewOrder = createStyledButton("New");
+            btnNewOrder = new JButton("New");
             btnNewOrder.addActionListener(this);
+            btnNewOrder.setBackground(new Color(70, 130, 180));  // Setare culoare RGB
+            btnNewOrder.setForeground(Color.WHITE);  // Setare culoare text alb
             gbc.gridx = 0;
             gbc.gridy = 3;
             gbc.gridwidth = 1;
+            gbc.weightx = 0.25;
+            gbc.fill = GridBagConstraints.HORIZONTAL;
             gbLayout.setConstraints(btnNewOrder, gbc);
             this.add(btnNewOrder);
 
-            btnEditOrder = createStyledButton("Edit");
+            btnEditOrder = new JButton("Edit");
             btnEditOrder.addActionListener(this);
+            btnEditOrder.setBackground(new Color(70, 130, 180));  // Setare culoare RGB
+            btnEditOrder.setForeground(Color.WHITE);  // Setare culoare text alb
             gbc.gridx = 1;
             gbc.gridy = 3;
             gbLayout.setConstraints(btnEditOrder, gbc);
             this.add(btnEditOrder);
 
-            btnCloseOrder = createStyledButton("Close");
+            btnCloseOrder = new JButton("Close");
             btnCloseOrder.addActionListener(this);
+            btnCloseOrder.setBackground(new Color(70, 130, 180));  // Setare culoare RGB
+            btnCloseOrder.setForeground(Color.WHITE);  // Setare culoare text alb
             gbc.gridx = 2;
             gbc.gridy = 3;
             gbLayout.setConstraints(btnCloseOrder, gbc);
             this.add(btnCloseOrder);
 
-            btnCancelOrder = createStyledButton("Cancel");
+            btnCancelOrder = new JButton("Cancel");
             btnCancelOrder.addActionListener(this);
+            btnCancelOrder.setBackground(new Color(70, 130, 180));  // Setare culoare RGB
+            btnCancelOrder.setForeground(Color.WHITE);  // Setare culoare text alb
             gbc.gridx = 3;
             gbc.gridy = 3;
             gbLayout.setConstraints(btnCancelOrder, gbc);
             this.add(btnCancelOrder);
 
             displayList = new JList();
-        }
-
-        private JLabel createStyledLabel() {
-            JLabel label = new JLabel();
-            label.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
-            return label;
-        }
-
-        private JButton createStyledButton(String text) {
-            JButton button = new JButton(text);
-            button.addActionListener(this);
-            button.setFocusPainted(false);
-            button.setFont(new Font("Arial", Font.BOLD, 14));
-            button.setBackground(new Color(70, 130, 180));
-            button.setForeground(Color.WHITE);
-            button.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
-
-            // Hover effect
-            button.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseEntered(java.awt.event.MouseEvent evt) {
-                    button.setBackground(new Color(100, 149, 237));
-                }
-
-                public void mouseExited(java.awt.event.MouseEvent evt) {
-                    button.setBackground(new Color(70, 130, 180));
-                }
-            });
-
-            return button;
         }
 
         private void setTotalCount(int count) {
@@ -1295,22 +1284,22 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
             lblTotalSales.setText("Total:$ " + sales);
         }
 
-//        private void setCancelCount(int count) {
-//            lblCancelCount.setText("Canceled orders: " + count);
-//        }
+        private void setCancelCount(int count) {
+            lblCancelCount.setText("Canceled orders: " + count);
+        }
 
-//        private void setCancelTotal(double sales) {
-//            lblCancelTotal.setText("Cancel total:$ " + sales);
-//        }
+        private void setCancelTotal(double sales) {
+            lblCancelTotal.setText("Cancel total:$ " + sales);
+        }
 
         private void showOrderList() {
             displayList.setListData(rcController.createOrderList().toArray());
             scrollPanel.getViewport().setView(displayList);
 
-            setTotalCount(rcController.getTodaysordercnt());
-            setTotalSales(rcController.getTotalsales());
-//            setCancelCount(rcController.getTodaysCancelCnt());
-//            setCancelTotal(rcController.getCancelTotal());
+            setTotalCount(rcController.getTodaysOrderCnt());
+            setTotalSales(rcController.getTotalSales());
+            setCancelCount(rcController.getTodaysCancelCnt());
+            setCancelTotal(rcController.getCancelTotal());
 
         }
 
@@ -1346,7 +1335,7 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
             if (ae.getSource() == btnNewOrder) {
                 changeMainPanel("OrderDetail");
                 int orderID = rcController.createOrder();
-                String staffName = rcController.getCurrent_username();
+                String staffName = rcController.getCurrentUserName();
                 cOrderDetailPanel.init(orderID, staffName);
             } else if (ae.getSource() == btnEditOrder) {
                 int orderID = getSelectedOrderID();
@@ -1361,7 +1350,7 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
                 if (showYesNoDialog("Close order", "Are you sure to close the order?") == DIALOG_YES) {
                     if (!rcController.closeOrder(orderID))
-                        displayErrorMessage(rcController.get_error_message());
+                        displayErrorMessage(rcController.getErrorMessage());
                     showOrderList();
                 }
             } else if (ae.getSource() == btnCancelOrder) {
@@ -1370,14 +1359,13 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
                 if (showYesNoDialog("Close order", "Are you sure to close the order?") == DIALOG_YES) {
                     if (!rcController.cancelOrder(orderID))
-                        displayErrorMessage(rcController.get_error_message());
+                        displayErrorMessage(rcController.getErrorMessage());
                     showOrderList();
                 }
             }
         }
     }
 
-    // Order detail panel
     private class OrderDetailPanel extends JPanel implements ActionListener, ListSelectionListener {
         private final JScrollPane menuScrollPanel;
         private final JButton btnAll;
@@ -1475,6 +1463,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
             btnAddItem = new JButton("Add");
             btnAddItem.addActionListener(this);
+            btnAddItem.setBackground(new Color(70, 130, 180));  // Setare culoare RGB
+            btnAddItem.setForeground(Color.WHITE);  // Setare culoare text alb
             gbc.gridx = 2;
             gbc.gridy = 6;
             gbc.gridwidth = 1;
@@ -1484,13 +1474,15 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
             btnDeleteItem = new JButton("Delete");
             btnDeleteItem.addActionListener(this);
+            btnDeleteItem.setBackground(new Color(70, 130, 180));  // Setare culoare RGB
+            btnDeleteItem.setForeground(Color.WHITE);  // Setare culoare text alb
             gbc.gridx = 3;
             gbc.gridy = 6;
             gbLayout.setConstraints(btnDeleteItem, gbc);
             orderDetailPanel.add(btnDeleteItem);
 
 
-            //Right panel            
+            //Right panel
             JPanel menuListPanel = new JPanel();
 
             menuListPanel.setLayout(gbLayout);
@@ -1515,6 +1507,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
             btnAll = new JButton("All");
             btnAll.addActionListener(this);
+            btnAll.setBackground(new Color(70, 130, 180));
+            btnAll.setForeground(Color.WHITE);
             gbc.gridx = 0;
             gbc.gridy = 2;
             gbc.gridwidth = 1;
@@ -1525,6 +1519,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
             btnBreakfast = new JButton("Breakfast");
             btnBreakfast.addActionListener(this);
+            btnBreakfast.setBackground(new Color(70, 130, 180));
+            btnBreakfast.setForeground(Color.WHITE);
             gbc.gridx = 1;
             gbc.gridy = 2;
             gbLayout.setConstraints(btnBreakfast, gbc);
@@ -1532,6 +1528,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
             btnLunch = new JButton("Lunch");
             btnLunch.addActionListener(this);
+            btnLunch.setBackground(new Color(70, 130, 180));
+            btnLunch.setForeground(Color.WHITE);
             gbc.gridx = 2;
             gbc.gridy = 2;
             gbLayout.setConstraints(btnLunch, gbc);
@@ -1539,6 +1537,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
             btnDinner = new JButton("Dinner");
             btnDinner.addActionListener(this);
+            btnDinner.setBackground(new Color(70, 130, 180));
+            btnDinner.setForeground(Color.WHITE);
             gbc.gridx = 3;
             gbc.gridy = 2;
             gbLayout.setConstraints(btnDinner, gbc);
@@ -1546,6 +1546,8 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
 
             btnDessert = new JButton("Dessert");
             btnDessert.addActionListener(this);
+            btnDessert.setBackground(new Color(70, 130, 180));
+            btnDessert.setForeground(Color.WHITE);
             gbc.gridx = 4;
             gbc.gridy = 2;
             gbLayout.setConstraints(btnDessert, gbc);
@@ -1589,7 +1591,7 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
             menuScrollPanel.getViewport().setView(menuList);
             tfQuantity.setText("");
             tfQuantity.setBackground(UIManager.getColor("TextField.background"));
-
+            setStaffName(staffName);
         }
 
         private void setTotal(double total) {
@@ -1600,6 +1602,9 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
             lblOrderState.setText("Order state: " + state);
         }
 
+        private void setStaffName(String name) {
+            lblStaffName.setText("Staff name: " + name);
+        }
 
         private void refreshOrderDetailList() {
             ArrayList<String> list = rcController.createOrderItemlList(currentOrderID);
@@ -1642,7 +1647,7 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
                 byte quantity = Byte.parseByte(tfQuantity.getText().trim());
                 displayMessage("Menu ID = " + id + " Quantity = " + quantity);
                 if (!rcController.addNewOrderItem(currentOrderID, id, quantity)) {
-                    displayErrorMessage("addNewOrderItem Error!!\n" + rcController.get_error_message());
+                    displayErrorMessage("addNewOrderItem Error!!\n" + rcController.getErrorMessage());
                 }
                 refreshOrderDetailList();
                 //auto scroll
@@ -1657,7 +1662,7 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
                 if (index == -1)
                     return;
                 if (!rcController.deleteOrderItem(currentOrderID, index)) {
-                    displayErrorMessage("deleteOrderItem Error!!\n" + rcController.get_error_message());
+                    displayErrorMessage("deleteOrderItem Error!!\n" + rcController.getErrorMessage());
                 }
                 refreshOrderDetailList();
             } else if (ae.getSource() == btnAll) {
@@ -1686,6 +1691,7 @@ public class UserInterface_GUI extends JFrame implements ActionListener {
             }
         }
     }
+
 
     // Total sales panel
     private class TotalSalesPanel extends JPanel implements ActionListener {

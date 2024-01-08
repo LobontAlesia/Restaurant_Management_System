@@ -639,4 +639,20 @@ public class Controller_GUI {
         output.append(String.format("Total payment:$%.2f (%d)", totalPayment, staffNum));
         return output.toString();
     }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public double getTotalSales() {
+        return totalsales;
+    }
+
+    public int getTodaysOrderCnt() {
+        return todaysordercnt;
+    }
+
+    public String getCurrentUserName() {
+        return current_username;
+    }
 }
