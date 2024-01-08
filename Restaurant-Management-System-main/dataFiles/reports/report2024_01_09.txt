@@ -1,0 +1,4 @@
+*********** Order List (2024_01_09) ***********
+Order ID:   1  StaffName:Alexia Ilia                     Total:$13.00 
+-------------------------------------------------------
+Total sales:$13.0(1)  Canceled:$0.0(0)

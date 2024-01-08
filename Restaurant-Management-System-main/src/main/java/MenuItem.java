@@ -149,4 +149,10 @@ public class MenuItem {
     byte getState() {
         return this.state;
     }
+
+    public MenuItem(int newID, String newName, double newPrice) {
+        this.ID = newID;
+        this.name = newName;
+        this.price = newPrice;
+    }
 }

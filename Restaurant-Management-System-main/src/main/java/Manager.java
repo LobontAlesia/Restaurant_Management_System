@@ -37,11 +37,17 @@ public class Manager extends Staff {
      *
      * @param newRate Noua rată de salariu
      */
+    /**
+     * Setează rata de salariu a managerului, asigurându-se că aceasta nu scade sub valoarea minimă.
+     *
+     * @param newRate Noua rată de salariu
+     */
     public void setWagerate(double newRate) {
-        if (wagerate < MINIMUM_RATE)
+        if (newRate < MINIMUM_RATE)
             newRate = MINIMUM_RATE;
         wagerate = newRate;
     }
+
 
     /**
      * Calculează salariile managerului în funcție de starea de muncă.
@@ -55,4 +61,5 @@ public class Manager extends Staff {
 
         return this.wagerate;
     }
+
 }

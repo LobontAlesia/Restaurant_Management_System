@@ -1,0 +1,5 @@
+*********** Payment List (2024_01_09) ***********
+Order ID:   1  StaffName:Lobont Alesia                   Work time:0.00  Pay:1000.00
+Order ID:   4  StaffName:Alexia Ilia                     Work time:0.00  Pay:0.00 
+-------------------------------------------------------
+Total payment:$1000.0(2)

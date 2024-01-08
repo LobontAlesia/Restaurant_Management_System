@@ -58,6 +58,17 @@ public abstract class Staff {
         state = 0;
     }
 
+    public Staff() {
+        setID(0);
+        setFirstName("John");
+        setLastName("Doe");
+        setPassword("password");
+
+        startworktime = null;
+        finishworktime = null;
+        state = 0;
+    }
+
     /**
      * Setează ID-ul angajatului.
      * @param newID
@@ -140,9 +151,6 @@ public abstract class Staff {
 
     /**
      * Setează starea angajatului.
-     * @param newState
-     * @return
-     * @throws Exception
      */
     public static final byte WORKSTATE_ACTIVE = 1;
     public static final byte WORKSTATE_FINISH = 2;
@@ -179,7 +187,6 @@ public abstract class Staff {
 
     /**
      * Obține timpul total de lucru al angajatului.
-     * @return
      */
     public void clockIn() {
         startworktime = new Date(System.currentTimeMillis());
@@ -188,7 +195,6 @@ public abstract class Staff {
 
     /**
      * Obține timpul total de lucru al angajatului.
-     * @return
      */
     public void clockOut() {
         if (state != WORKSTATE_ACTIVE)
@@ -235,4 +241,16 @@ public abstract class Staff {
     protected abstract void setWagerate(double newRate);
 
     protected abstract double calculateWages();
+
+    public void setStartWorkTime(Date parse) {
+        startworktime = parse;
+    }
+
+    public void setFinishWorkTime(Date parse) {
+        finishworktime = parse;
+    }
+
+    public void setWorkState(byte workstateFinish) {
+        state = workstateFinish;
+    }
 }

@@ -12,7 +12,7 @@
 public class Employee extends Staff {
 
     /** Rata minimă de salariu pentru angajați. */
-    private static final double MINIMUM_RATE = 13.5;
+    static final double MINIMUM_RATE = 13.5;
 
     /**
      * Construiește o nouă instanță a clasei {@code Employee} cu ID, nume, prenume și parolă specificate.
@@ -26,6 +26,10 @@ public class Employee extends Staff {
     public Employee(int newID, String newFirstName, String newLastName, String newPassword) {
         super(newID, newFirstName, newLastName, newPassword);
         wagerate = MINIMUM_RATE;
+    }
+
+    public Employee() {
+        super();
     }
 
     /**

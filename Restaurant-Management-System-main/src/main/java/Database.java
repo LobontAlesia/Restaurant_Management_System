@@ -17,8 +17,8 @@ public class Database {
      * Calea către fișierul de raport al comenzilor.
      * <p>
      */
-    private final static String DATA_FILES_REPORTS_REPORT = "C:\\Users\\Alesia\\Downloads\\Restaurant-Management-System-main\\Restaurant-Management-System-main\\dataFiles\\reports\\report_";
-    private final static String DATA_FILES_REPORTS_PAYMENT = "C:\\Users\\Alesia\\Downloads\\Restaurant-Management-System-main\\Restaurant-Management-System-main\\dataFiles\\reports\\payment_";
+    private final static String DATA_FILES_REPORTS_REPORT = "C:\\Users\\Alesia\\Downloads\\Restaurant-Management-System-main\\Restaurant-Management-System-main\\dataFiles\\reports\\report";
+    private final static String DATA_FILES_REPORTS_PAYMENT = "C:\\Users\\Alesia\\Downloads\\Restaurant-Management-System-main\\Restaurant-Management-System-main\\dataFiles\\reports\\payment";
 
     /**
      * Informații despre conexiunea la baza de date.
